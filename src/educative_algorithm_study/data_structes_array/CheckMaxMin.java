@@ -1,4 +1,4 @@
-package educative_algorithm_study.data_structes;
+package educative_algorithm_study.data_structes_array;
 
 /**
  * @author XiZhuangBaoTu
@@ -8,8 +8,8 @@ package educative_algorithm_study.data_structes;
  **/
 public class CheckMaxMin {
     public static void main(String[] args) {
-        int[] arr = {1, 2, 3, 4, 5, 6};
-        maxMin(arr);
+        int[] arr = {11,22,33,44,55,66,77,88,99};
+        maxMin2(arr);
         for (int i = 0; i < arr.length; i++)
             System.out.print(arr[i] + " ");
         System.out.println();
@@ -32,6 +32,26 @@ public class CheckMaxMin {
 
         for (int i = 0; i < arr.length; i++) {
             arr[i] = newArr[i];
+        }
+    }
+
+    public static void maxMin2(int[] arr) {
+       int mixIndex = 0;
+       int maxIndex = arr.length -1;
+       int maxValue = arr[maxIndex] + 1;
+
+        for (int i = 0; i < arr.length; i++) {
+            if (i % 2 == 0) {
+                arr[i] += (arr[maxIndex] % maxValue) * maxValue;
+                maxIndex--;
+            }else {
+                arr[i] += (arr[mixIndex] % maxValue) * maxValue;
+                mixIndex++;
+            }
+        }
+
+        for (int i = 0; i < arr.length; i++) {
+            arr[i] = arr[i] / maxValue;
         }
     }
 }

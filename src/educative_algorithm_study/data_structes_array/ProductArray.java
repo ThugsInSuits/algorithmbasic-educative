@@ -1,4 +1,4 @@
-package educative_algorithm_study.data_structes;
+package educative_algorithm_study.data_structes_array;
 
 import java.util.ArrayList;
 import java.util.List;
