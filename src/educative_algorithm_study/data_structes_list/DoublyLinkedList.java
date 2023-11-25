@@ -13,14 +13,29 @@ public class DoublyLinkedList<T> {
         private Node preNode;
     }
     public Node headNode;
+    public Node tailNode;
     public int size;
 
     public DoublyLinkedList(){
         this.headNode = null;
+        size = 0;
+        this.tailNode = null;
     }
 
     public boolean isEmpty(){
-        return this.headNode == null;
+        return this.headNode == null && this.tailNode == null;
+    }
+
+    public Node getHeadNode() {
+        return headNode;
+    }
+
+    public Node getTailNode() {
+        return tailNode;
+    }
+
+    public int getSize() {
+        return size;
     }
 
     public void insertAtHead(T data){
@@ -28,10 +43,26 @@ public class DoublyLinkedList<T> {
         newNode.data = data;
         newNode.nextNode = headNode;
         newNode.preNode = null;
-        if (headNode != null) {
+        if (!isEmpty()) {
             headNode.preNode = newNode;
+        }else {
+            tailNode = newNode;
         }
         headNode = newNode;
+        size++;
+    }
+
+    public void insertAtEnd(T data) {
+        if (isEmpty()) {
+            insertAtHead(data);
+            return;
+        }
+        Node newNode = new Node();
+        newNode.data = data;
+        newNode.nextNode = null;
+        newNode.preNode = tailNode;
+        tailNode.nextNode = newNode;
+        tailNode = newNode;
         size++;
     }
 
@@ -41,8 +72,26 @@ public class DoublyLinkedList<T> {
         }
 
         headNode = headNode.nextNode;
-        headNode.preNode = null;
+        if (headNode == null) {
+            tailNode = null;
+        }else {
+            headNode.preNode = null;
+        }
         size--;
+    }
+
+    public void deleteAtTail(){
+        if(isEmpty()) {
+            return;
+        }
+        tailNode = tailNode.preNode;
+        if (tailNode == null ) {
+            headNode = null;
+        }else {
+            tailNode.nextNode = null;
+        }
+        size--;
+
     }
 
     public void printList(){
@@ -90,6 +139,8 @@ public class DoublyLinkedList<T> {
         dll.deleteAtHead();
         dll.printList();
         dll.deleteByValue(5);
+        dll.printList();
+        dll.insertAtEnd(-1);
         dll.printList();
     }
 }

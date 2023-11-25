@@ -12,8 +12,16 @@ public class SinglyLinkedList<T> {
         public Node nextNode;
     }
 
-    public Node headNode;
-    public int size;
+    private Node headNode;
+    private int size;
+
+    public Node getHeadNode() {
+        return headNode;
+    }
+
+    public int getSize() {
+        return size;
+    }
 
     public SinglyLinkedList(){
         headNode = null;
@@ -124,6 +132,40 @@ public class SinglyLinkedList<T> {
         }
     }
 
+    public int length(){
+        Node current = headNode;
+        int count = 0;
+        while (current != null) {
+            current = current.nextNode;
+            count++;
+        }
+        return count;
+    }
+
+    /**
+     *@Author XiZhuangBaoTu
+     *@Description //快慢针，走一步的先到中点，慢的走到中间
+     *@Date 17:43 2023/11/24
+     *@Param []
+     *@return int
+     **/
+    public T checkMid() {
+        if (isEmpty()) {
+            return null;
+        }
+
+        Node current = headNode;
+        Node midNode = headNode;
+        while (midNode != null && current != null && current.nextNode != null) {
+            current = current.nextNode.nextNode;
+            if (current != null) {
+                midNode = midNode.nextNode;
+            }
+
+        }
+        return midNode.data;
+    }
+
     public static void main(String[] args) {
         SinglyLinkedList<Integer> list = new SinglyLinkedList<>();
         list.printList();
@@ -133,6 +175,8 @@ public class SinglyLinkedList<T> {
         list.printList();
         list.deleteByValue(3);
         list.printList();
+        System.out.println(list.length());
+        System.out.println(list.checkMid());
 
 //        list.insertAfter(999,5);
 //        for (int i = 1; i <= 10; i++) {
