@@ -8,9 +8,9 @@ package educative_algorithm_study.data_structes_list;
  **/
 public class DoublyLinkedList<T> {
     public class Node{
-        private T data;
-        private Node nextNode;
-        private Node preNode;
+        public T data;
+        public Node nextNode;
+        public Node preNode;
     }
     public Node headNode;
     public Node tailNode;
