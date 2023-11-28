@@ -115,40 +115,97 @@ public class BinarySearchTree {
         return true;
     }
 
+    public boolean delete(int value,Node currentNode) {
+        if (currentNode == null) {
+            return false;
+        }
+        Node parent = null;
+        while (currentNode != null && (currentNode.getData() != value)) {
+            parent = currentNode;
+            if (currentNode.getData() > value) {
+                currentNode = currentNode.getLeftChild();
+            }else {
+                currentNode = currentNode.getRightChild();
+            }
+        }
+        if (currentNode == null) {
+            return false;
+        }else if (currentNode.getLeftChild() == null && currentNode.getRightChild() == null) {
+            if (currentNode.getData() == root.getData()) {
+                setRoot(null);
+                return true;
+            }else if (currentNode.getData() < parent.getData()) {
+                parent.setLeftChild(null);
+                return true;
+            }else {
+                parent.setRightChild(null);
+                return true;
+            }
+        }else if (currentNode.getRightChild() == null) {
+            if (root.getData() == currentNode.getData()) {
+                setRoot(currentNode.getLeftChild());
+                return true;
+            }else if (currentNode.getData() < parent.getData()) {
+                parent.setLeftChild(currentNode.getLeftChild());
+                return true;
+            }else {
+                parent.setRightChild(currentNode.getLeftChild());
+                return true;
+            }
+        }else if (currentNode.getLeftChild() == null) {
+            if (root.getData() == currentNode.getData()) {
+                setRoot(currentNode.getRightChild());
+                return true;
+            }else if (currentNode.getData() < parent.getData()){
+                parent.setLeftChild(currentNode.getRightChild());
+                return true;
+            }else {
+                parent.setRightChild(currentNode.getRightChild());
+                return true;
+            }
+        }else {
+            Node leastNode = findLeastNode(currentNode.getLeftChild());
+            int temp = leastNode.getData();
+            delete(temp,root);
+            currentNode.setData(temp);
+            return true;
+        }
+    }
+
+    private Node findLeastNode(Node currentNode) {
+        Node temp = currentNode;
+        while (temp.getLeftChild() != null) {
+            temp = temp.getLeftChild();
+        }
+        return temp;
+    }
+
     public static void main(String args[]) {
 
         BinarySearchTree bsT = new BinarySearchTree();
 
-//        bsT.add(6);
-//        bsT.add(4);
-//        bsT.add(9);
-//        bsT.add(5);
-//        bsT.add(2);
-//        bsT.add(8);
-//        bsT.add(12);
-//        bsT.add(10);
-//        bsT.add(14);
+        bsT.add(6);
+        bsT.add(7);
+        bsT.add(8);
+        bsT.add(12);
+        bsT.add(1);
+        bsT.add(15);
 
-        bsT.addWithRecursiveInsert(6);
-        bsT.addWithRecursiveInsert(4);
-        bsT.addWithRecursiveInsert(9);
-        bsT.addWithRecursiveInsert(5);
-        bsT.addWithRecursiveInsert(2);
-        bsT.addWithRecursiveInsert(8);
-        bsT.addWithRecursiveInsert(12);
-        bsT.addWithRecursiveInsert(10);
-        bsT.addWithRecursiveInsert(14);
-        System.out.println(">> Tree <<");
+
+        System.out.print("Tree : ");
         bsT.printTree(bsT.getRoot());
 
-        Node temp = bsT.searchRecursive(bsT.root,5);
-        if (temp != null) {
-            System.out.println("\n" + temp.getData() + " found in Tree !");
-        }
-        temp = bsT.search(51);
-        if (temp != null) {
-            System.out.println("\n" + temp.getData() + " found in Tree !");
-        }
-    }
 
+        System.out.print("\nDeleting Node 6: ");
+        bsT.delete(6, bsT.getRoot());
+        bsT.printTree(bsT.getRoot());
+
+        System.out.print("\nDeleting Node 15: ");
+        bsT.delete(15, bsT.getRoot());
+        bsT.printTree(bsT.getRoot());
+
+        System.out.print("\nDeleting Node 1: ");
+        bsT.delete(1, bsT.getRoot());
+        bsT.printTree(bsT.getRoot());
+    }
 }
