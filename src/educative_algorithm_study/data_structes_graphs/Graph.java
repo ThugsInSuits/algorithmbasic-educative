@@ -44,6 +44,8 @@ public class Graph {
     void addEdge(int source,int destination) {
         if (source < vertices && destination < vertices) {
             this.adjacencyList[source].insertAtEnd(destination);
+            // for undirected graph uncomment the line below
+            this.adjacencyList[destination].insertAtEnd(source);
         }
     }
     public static void main( String args[] ) {
