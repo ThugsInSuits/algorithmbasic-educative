@@ -15,6 +15,10 @@ public class Trie {
         root = new TrieNode();
     }
 
+    public TrieNode getRoot() {
+        return root;
+    }
+
     public int getIndex(char t) {
         return t - 'a';
     }
