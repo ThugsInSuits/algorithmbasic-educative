@@ -10,6 +10,16 @@ import educative_algorithm_study.algorithms.Helper;
  **/
 public class Search {
     public static int  binarySearch(int s,int[] arr,int arrSize) {
+        if (arrSize <= 0) {
+            return -1;
+        }
+        if (arrSize == 1 ) {
+            if (arr[0] == s) {
+                return 0;
+            }else {
+                return -1;
+            }
+        }
         int start = 0;
         int end = arrSize - 1;
         int mid;
@@ -23,7 +33,7 @@ public class Search {
                 return mid;
             }
         }
-        return Integer.MIN_VALUE;
+        return -1;
     }
 
     public static void main(String args[]) {
