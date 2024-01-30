@@ -1,4 +1,4 @@
-package educative_algorithm_study.algorithms;
+package educative_algorithm_study.algorithms.searchinarotatedarray;
 
 /**
  * @author XiZhuangBaoTu

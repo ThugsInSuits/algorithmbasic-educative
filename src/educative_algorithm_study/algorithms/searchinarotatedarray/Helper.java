@@ -1,4 +1,4 @@
-package educative_algorithm_study.algorithms;
+package educative_algorithm_study.algorithms.searchinarotatedarray;
 
 import java.util.Random;
 
@@ -56,7 +56,7 @@ public class Helper {
 //
 //    }
 
-    public int binarySearch(int s ,int[] arr,int arrSize) {
+    public static int binarySearch(int s ,int[] arr,int arrSize) {
         if (arrSize <= 0) {
             return -1;
         }

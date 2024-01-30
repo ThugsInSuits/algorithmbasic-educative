@@ -1,13 +1,11 @@
-package educative_algorithm_study.algorithms;
+package educative_algorithm_study.algorithms.searchinarotatedarray;
 
-import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils;
-import educative_algorithm_study.algorithms.util.Util;
+import educative_algorithm_study.algorithms.searchinarotatedarray.util.Util;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * @author XiZhuangBaoTu

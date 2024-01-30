@@ -1,6 +1,6 @@
 package educative_algorithm_study.algorithms.saerch_and_sorting;
 
-import educative_algorithm_study.algorithms.Helper;
+import educative_algorithm_study.algorithms.searchinarotatedarray.Helper;
 
 /**
  * @author XiZhuangBaoTu
