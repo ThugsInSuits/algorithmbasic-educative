@@ -1,5 +1,7 @@
 package educative_algorithm_study.algorithms;
 
+import java.util.Random;
+
 /**
  * @author XiZhuangBaoTu
  * Date 2023/12/4 16:17
@@ -44,5 +46,14 @@ public class Helper {
         array[i] = array[j];
         array[j] = temp;
     }
+
+//    private int choosePivot(int left,int right) {
+//        Random random = new Random();
+//
+//    }
+
+//    public static int partition(int arr[],int left,int right) {
+//
+//    }
 
 }

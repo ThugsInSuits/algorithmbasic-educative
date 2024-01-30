@@ -19,9 +19,9 @@ public class CheckSum {
         }
         return result; // return the elements in the array whose sum is equal to the value passed as parameter
     }
-    public static int[] findSum_quick_solution(int[] arr, int n) {
-
-    }
+//    public static int[] findSum_quick_solution(int[] arr, int n) {
+//
+//    }
 
     public static void main(String args[]) {
 
