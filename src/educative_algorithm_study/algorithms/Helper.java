@@ -56,4 +56,32 @@ public class Helper {
 //
 //    }
 
+    public int binarySearch(int s ,int[] arr,int arrSize) {
+        if (arrSize <= 0) {
+            return -1;
+        }
+        if (arrSize== 1) {
+            if (s == arr[0] ) {
+                return 0;
+            }else {
+                return -1;
+            }
+        }
+
+        int left = 0;
+        int rigth = arrSize - 1;
+        while (left < rigth) {
+            int mid = (left + rigth) / 2;
+            if (arr[mid] < s) {
+                left = mid + 1;
+            }else if (arr[mid] > s) {
+                rigth = mid - 1;
+            }else {
+                return mid;
+            }
+        }
+        return -1;
+    }
+
+
 }
