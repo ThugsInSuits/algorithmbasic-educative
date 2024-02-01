@@ -1,5 +1,6 @@
 package educative_algorithm_study.algorithms.graph_algorithms;
 
+import java.util.Iterator;
 import java.util.LinkedList;
 
 /**
@@ -31,5 +32,16 @@ public class Graph {
 
     public LinkedList<Integer>[] getAdj(){
         return this.adjacencyList;
+    }
+
+    public Graph geTranspose() {
+        Graph g = new Graph(vertices);
+        for (int i = 0; i < vertices; i++) {
+            Iterator<Integer> iterator = adjacencyList[i].listIterator();
+            while (iterator.hasNext()) {
+                g.adjacencyList[iterator.next()].add(i);
+            }
+        }
+        return g;
     }
 }
