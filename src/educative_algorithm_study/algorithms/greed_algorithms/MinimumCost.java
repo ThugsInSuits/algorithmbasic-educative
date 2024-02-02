@@ -24,9 +24,19 @@ public class MinimumCost {
         return cost;
     }
 
-    public static int minCost2(int[] pipes) {
-        Stack<Integer> stack = new Stack<>();
-        int
+    // 使用minhea
+    public static int minCost2(int[] pipes,int n) {
+        int cost = 0;
+        int minium,secondMinium;
+        MinHeap heap = new MinHeap(pipes,n);
+
+        while (!heap.sizeIsOne()) {
+            minium = heap.extractMin();
+            secondMinium = heap.extractMin();
+            cost += (minium + secondMinium);
+            heap.insertKey(minium + secondMinium);
+        }
+        return cost;
     }
 
     public static void main(String[] args) {
